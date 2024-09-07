@@ -1,4 +1,7 @@
-# README
+# アプリケーション名 
+my training
+
+# URL
 
 
 ## User名
