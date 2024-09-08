@@ -11,7 +11,7 @@ my training
 | name                 | string | null: false |
 | email                | string | null: false,unique: true |
 | encrypted_password   | string | null: false | 
- records : has many
+ has many :records
  has_one :profile,dependent: :destroy
 
 ## profileテーブル
@@ -36,9 +36,10 @@ belongs_to :user
 | duration       | int        | null: false, greater_than_or_equal_to: 0 |
 | reps           | int        | null: false, greater_than:0    |           
 | memo           | text       |                                |
- 
-user belongs to
-exercise belongs to
+
+belongs_to:user
+belongs_to:  exercise
+
 
 
 
@@ -48,7 +49,7 @@ exercise belongs to
 | -----------------    | ------      | ----------- |
 | name                 | string      | null: false |
 | description          | text        | null: false |
-records : has many
+has_many :record
 
 
 

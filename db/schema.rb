@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_08_043713) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_08_080352) do
+  create_table "exercises", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "records", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "exercise_id", null: false
+    t.date "date", null: false
+    t.integer "reps", null: false
+    t.integer "duration", null: false
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_records_on_exercise_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,4 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_043713) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "records", "exercises"
+  add_foreign_key "records", "users"
 end
