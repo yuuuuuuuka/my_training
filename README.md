@@ -6,26 +6,23 @@ my training
 
 ## User名
 
-|Column                |Type    |Options|
 | Column               | Type   | Options     |
 | ------------------   | ------ | ----------- |
 | name                 | string | null: false |
 | email                | string | null: false,unique: true |
-| encrypted_password   | string | null: false |  
+| encrypted_password   | string | null: false | 
  records : has many
+ has_one :profile,dependent: :destroy
 
-
-
-## Exerciseテーブル
-
-| Column               | Type        | Options     |
-| -----------------    | ------      | ----------- |
-| name                 | string      | null: false |
-| description          | text        | null: false |
-| category             | enum        | null: false |
-records : has many
-
-
+## profileテーブル
+| Column               | Type       | Options     |
+| -----------------    | ------     | ----------- |
+| user                 | references | null: false, foreign_key: true |
+| height               | int        | null: false |
+| weight               | int        | null: false |
+| goal_weight          | int        | null: false |
+belongs_to :user
+ 
 
 
 
@@ -36,10 +33,24 @@ records : has many
 | user           | references | null: false, foreign_key: true |
 | exercise       | references | null: false, foreign_key: true |
 | date           |  date      | null: false                    |
-|duration        | int        | null: false                    |
-
+| duration       | int        | null: false, greater_than_or_equal_to: 0 |
+| reps           | int        | null: false, greater_than:0    |           
+| memo           | text       |                                |
+ 
 user belongs to
 exercise belongs to
+
+
+
+## Exerciseテーブル
+
+| Column               | Type        | Options     |
+| -----------------    | ------      | ----------- |
+| name                 | string      | null: false |
+| description          | text        | null: false |
+records : has many
+
+
 
 
 
