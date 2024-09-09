@@ -31,7 +31,7 @@ belongs_to :user
 | Column         | Type       | Options                        |
 | ------         | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
-| exercise       | references | null: false, foreign_key: true |
+| type           | string     | null: false                    |
 | date           |  date      | null: false                    |
 | duration       | int        | null: false, greater_than_or_equal_to: 0 |
 | reps           | int        | null: false, greater_than:0    |           
@@ -47,7 +47,7 @@ belongs_to:  exercise
 
 | Column               | Type        | Options     |
 | -----------------    | ------      | ----------- |
-| name                 | string      | null: false |
+
 | description          | text        | null: false |
 has_many :record
 

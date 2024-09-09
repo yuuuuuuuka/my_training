@@ -7,6 +7,7 @@ class CreateRecords < ActiveRecord::Migration[7.0]
       t.integer :reps,        null: false
       t.integer :duration,    null: false
       t.text   :memo
+      
 
       t.timestamps
     end
