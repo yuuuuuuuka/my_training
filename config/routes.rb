@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
  
-  root to: "records#index"
-  resources :records
+  root to: "training_records#index"
+  resources :training_records
 end

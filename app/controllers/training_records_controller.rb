@@ -1,17 +1,16 @@
-class RecordsController < ApplicationController
+class TrainingRecordsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   def index
   end
 
   def new
-    @record = Record.new
+    @training_record = TrainingRecord.new
   end
 
   def create
-    binding.pry
-    @record = Record.new(record_params)
+    @training_record = TrainingRecord.new
 
-    if @record.save
+    if @training_record.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
@@ -21,7 +20,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:date, :exercise_type, :duration, :reps, :memo).merge(user_id: current_user.id)
+    params.require(:training_record).permit(:date, :exercise_type, :duration, :reps, :memo).merge(user_id: current_user.id)
   end
 
   def move_to_index

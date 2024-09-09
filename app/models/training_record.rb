@@ -1,4 +1,4 @@
-class Record < ApplicationRecord
+class TrainingRecord < ApplicationRecord
   belongs_to :user
 
   validates :date, presence: { message: '運動を行った日付を入力してください。' }
